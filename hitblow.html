@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hit&blow</title>
+    <link href="./hitblow.css" rel="stylesheet"  >
+</head>
+<body>
+    <script>
+        result_num = 0;
+        keta = 1;
+        var numbers = [0,0,0,0];
+        var random = [0,0,0,0];
+        
+        for (i=0;i<4;i++){
+            var temp = Math.floor(Math.random() * 9)+1;
+            var jadge = i;
+            for (j=0;j<i;j++)
+            {
+                if (random[j]==temp){
+                    i--;
+                    break;
+                }
+            }
+            if (jadge==i){
+                random[i] = temp;
+            }
+        }
+        function Onclick1(number){
+            if (keta<5){
+            numbers[keta-1] = number;
+            document.getElementById(keta).innerText = numbers[keta-1];
+            keta++;
+            }
+            else {
+                alert("4桁です");
+            }
+        }
+        function Equal(num1,num2){
+            var i=0;
+            
+            var hit = 0;
+            var blow = 0;
+            num1.forEach((number)=>
+            {
+                if (number == num2[i])
+                    hit++;
+                else{
+                    for (j=0;j<4;j++)
+                    {
+                        if (number == num2[j])
+                            blow++;
+                    }
+                }
+                i++;
+            });
+            var div = document.createElement('div');
+            div.innerText = `${num2} hit:${hit} blow${blow}`;
+            div.classList.add('text');
+            document.getElementById("results").appendChild(div);
+            if (hit == 4)
+                return true;
+            else
+                return false;
+        }
+        function Discribe(){
+            alert("ルール説明\n"+
+                "相手の４桁の数字を当てるゲームです。\n"+
+                "1〜9の４桁ですべて違う数字です。"+
+                "相手の数字を予想します。"+
+                "相手はその数字の「ヒット」と「ブロー」の数を答えます。"+  
+                "「ヒット（Ｈ）」：桁が合っている数字の数。"+
+                "「ブロー（Ｂ）」：桁は違うけれど使われている数字の数。"+
+                "このヒットとブローの数を頼りに相手の数字を考えていきます。"+
+                "例：自分の数字が「１２３４」のとき\n"+
+                "「２３５４」→「１Ｈ２Ｂ」\n"+
+                "「５６７８」→「０Ｈ０Ｂ」");
+
+        }
+        function Onclick2(){
+            result_num++;
+            if(keta==5){
+                if (Equal(random,numbers)){
+                alert(`終了！\n${result_num}回かかりました！`);
+                window.open('about:blank','_self').close();
+                }
+                for (i=0;i<4;i++)
+                    deleat1();
+            }
+            else 
+            alert("4桁を入力してください");
+        }
+        function deleat1(){
+            if (keta>1)
+            {
+            keta--;
+            document.getElementById(keta).innerText = " ";
+            }
+            else
+            {
+                alert("それ以上消せません");
+            }
+        }    
+    </script>
+
+    <header>
+        <h1>Hit&Blow</h1>
+        <div class = "displays" id = "displays">
+            
+            <div class = "display" id = 1>ボタンで数字を入力してください</div>
+            <div class = "display" id = 2></div>
+            <div class = "display" id = 3></div>
+            <div class = "display" id = 4></div>    
+        </div>
+    </header>
+    
+    <main>
+        <div class = "bottons">
+            <div class = "btns-line ">
+                <a onclick = "Onclick1(1)" class = "btn">1</a>
+                <a onclick = "Onclick1(2)" class = "btn">2</a>
+                <a onclick = "Onclick1(3)" class = "btn">3</a>
+           
+            </div>
+            <div class = "btns-line">
+                <a  onclick = "Onclick1(4)" class = "btn">4</a>
+                <a  onclick = "Onclick1(5)" class = "btn">5</a>
+                <a  onclick = "Onclick1(6)" class = "btn">6</a>
+            </div>
+            <div class = "btns-line ">
+                <a  onclick = "Onclick1(7)" class = "btn">7</a>
+                <a  onclick = "Onclick1(8)" class = "btn">8</a>
+                <a  onclick = "Onclick1(9)" class = "btn">9</a>
+                
+                
+                
+            </div>
+            <div class = "btns-line ">
+                    <a  onclick = "Discribe()" class = "btn">説明</a>
+                    <a  onclick = "Onclick2()" class = "btn">確定</a>
+                    <a  onclick = "deleat1()" class = "btn">取消</a>
+                </div>
+        </div>
+
+        <div class = "results" id = "results">
+
+        </div>
+    </main>
+</body>
+</html>
