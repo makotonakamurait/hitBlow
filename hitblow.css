@@ -43,10 +43,10 @@ main{
     height:80px;
     width:100%
 }
-.btns-line1{
+.btns-line1 .btn{
     background-color:skyblue;
  }
-.btns-line2{
+.btns-line2 .btn{
     background-color:rgb(66, 243, 66);
 }
 body{
