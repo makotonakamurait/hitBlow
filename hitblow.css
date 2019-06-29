@@ -1,0 +1,53 @@
+.btn{
+    text-align:center;
+    height:40px;
+    width:10%;
+    margin-right:5px;
+    display:inline-block;
+    background-color:skyblue;
+    line-height: 30px;
+    box-shadow:0 5px rgba(0,0,0,0.4);
+    border-radius: 10%;
+}
+
+.btn:active{
+    margin-top:5px;
+    box-shadow:none;
+}
+.display{
+    float:left;
+    margin:0 30px;
+}
+.displays{
+    margin:0 auto;
+    padding-left:30px;
+    width:300px;
+    height:40px;
+    color:white;
+    
+}
+
+header{
+    text-align: center;
+    color:white;
+}
+header h1{
+    font-size:500%;
+}
+header div{
+    text-align:center;
+}
+main{
+    text-align:center;
+}
+.btns-line{
+    height:80px;
+    width:100%
+}
+
+body{
+    background-color:#696969;
+}
+.text{
+    color:white;
+}
