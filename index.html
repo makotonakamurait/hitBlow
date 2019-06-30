@@ -56,8 +56,8 @@
                 }
                 i++;
             });
-            var div = document.createElement('div');
-            div.innerText = `${num2}  hit:${hit} blow${blow}`;
+            var div = document.createElement('pre');
+            div.innerText = `${num2}     hit:${hit}  blow${blow}`;
             div.classList.add('text');
             document.getElementById("results").appendChild(div);
             if (hit == 4)
