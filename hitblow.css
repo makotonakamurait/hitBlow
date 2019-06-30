@@ -51,6 +51,7 @@ main{
 }
 body{
     background-color:#696969;
+    user-select: none;
 }
 .text{
     color:white;
